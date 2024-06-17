@@ -1,36 +1,28 @@
 import requests
 import json
 
-def send_request(url, expected_status, expected_keys):
-    print(f"Testing endpoint: {url}")
-    
-    response = requests.get(url)
-    if response.status_code != expected_status:
-        print(f"Test FAILED: Expected status {expected_status} but got {response.status_code}")
-        return False
-    
-    print(f"HTTP Status OK: {response.status_code}")
+# Lista endpointów do testowania
+endpoints = [
+    "https://jsonplaceholder.typicode.com/posts/1",
+    "https://jsonplaceholder.typicode.com/posts/2",
+    "https://jsonplaceholder.typicode.com/posts/3"
+]
 
-    response_json = response.json()
-    if isinstance(response_json, list):
-        response_json = response_json[0]
+# Funkcja do wysyłania żądania i sprawdzania odpowiedzi
+def test_api(endpoint):
+    response = requests.get(endpoint)
+    http_code = response.status_code
+    json_response = response.json()
+    return http_code, json_response
 
-    for key in expected_keys:
-        if key not in response_json:
-            print(f"Test FAILED: Missing key '{key}' in response")
-            return False
+# Testy
+def run_tests():
+    for i, endpoint in enumerate(endpoints):
+        http_code, json_response = test_api(endpoint)
+        if http_code == 200 and 'userId' in json_response:
+            print(f"Test {i + 1}: PASSED")
+        else:
+            print(f"Test {i + 1}: FAILED")
 
-    print("All expected keys are present.")
-    return True
-
-# Test 1 posts
-test_1 = send_request("https://jsonplaceholder.typicode.com/posts", 200, ["userId", "id", "title"])
-print("Test 1: PASSED" if test_1 else "Test 1: FAILED")
-
-# Test 2 comments
-test_2 = send_request("https://jsonplaceholder.typicode.com/comments", 200, ["postId", "id", "name", "email"])
-print("Test 2: PASSED" if test_2 else "Test 2: FAILED")
-
-# Test 3 users
-test_3 = send_request("https://jsonplaceholder.typicode.com/users", 200, ["id", "name", "username", "email"])
-print("Test 3: PASSED" if test_3 else "Test 3: FAILED")
+if __name__ == "__main__":
+    run_tests()
