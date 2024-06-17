@@ -1,16 +1,16 @@
-# API Test Script
+# Automatyzacja Testów API
 
-## Opis
+Ten skrypt automatyzuje testowanie endpointów API za pomocą biblioteki `requests`.
 
-Skrypt `api_test.py` testuje różne endpointy API przy użyciu biblioteki `requests` w Pythonie. Skrypt sprawdza odpowiedzi HTTP oraz kluczowe elementy w odpowiedziach JSON.
+## Wymagania wstępne
 
-## Wymagania
-
-- Python 3.x
+- Python 3
 - Biblioteka `requests`
 
-## Instrukcja użycia
+## Jak uruchomić testy
 
-1. Zainstaluj wymagane narzędzia:
-   ```bash
+1. Sklonuj repozytorium.
+2. Przejdź do katalogu projektu.
+3. Zainstaluj wymaganą bibliotekę:
+   ```sh
    pip install requests
