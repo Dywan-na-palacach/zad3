@@ -2,15 +2,15 @@
 
 ## Opis
 
-Skrypt `api_test.sh` testuje różne endpointy API przy użyciu narzędzia `curl`. Skrypt sprawdza odpowiedzi HTTP oraz kluczowe elementy w odpowiedziach JSON.
+Skrypt `api_test.py` testuje różne endpointy API przy użyciu biblioteki `requests` w Pythonie. Skrypt sprawdza odpowiedzi HTTP oraz kluczowe elementy w odpowiedziach JSON.
 
 ## Wymagania
 
-- `curl`
-- `jq`
+- Python 3.x
+- Biblioteka `requests`
 
 ## Instrukcja użycia
 
 1. Zainstaluj wymagane narzędzia:
    ```bash
-   sudo apt install jq
+   pip install requests
