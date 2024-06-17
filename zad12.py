@@ -23,14 +23,14 @@ def send_request(url, expected_status, expected_keys):
     print("All expected keys are present.")
     return True
 
-# Test 1: GET /posts
+# Test 1 posts
 test_1 = send_request("https://jsonplaceholder.typicode.com/posts", 200, ["userId", "id", "title"])
 print("Test 1: PASSED" if test_1 else "Test 1: FAILED")
 
-# Test 2: GET /comments
+# Test 2 comments
 test_2 = send_request("https://jsonplaceholder.typicode.com/comments", 200, ["postId", "id", "name", "email"])
 print("Test 2: PASSED" if test_2 else "Test 2: FAILED")
 
-# Test 3: GET /users
+# Test 3 users
 test_3 = send_request("https://jsonplaceholder.typicode.com/users", 200, ["id", "name", "username", "email"])
 print("Test 3: PASSED" if test_3 else "Test 3: FAILED")
